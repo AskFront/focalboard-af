@@ -34,7 +34,7 @@ endif
 all: webapp server ## Build server and webapp.
 
 prebuild: ## Run prebuild actions (install dependencies etc.).
-	cd webapp; pnpm install
+	cd webapp; npm install
 
 ci: webapp-ci server-test ## Simulate CI, locally.
 
@@ -173,15 +173,15 @@ server-test-postgres: ## Run server tests using postgres
 	docker compose -f ./docker-testing/docker-compose-postgres.yml down -v --remove-orphans
 
 webapp: ## Build webapp.
-	cd webapp; pnpm run pack
+	cd webapp; npm run pack
 
 webapp-ci: ## Webapp CI: linting & testing.
-	cd webapp; pnpm run check
-	cd webapp; pnpm run test
-	cd webapp; pnpm run cypress:ci
+	cd webapp; npm run check
+	cd webapp; npm run test
+	cd webapp; npm run cypress:ci
 
 webapp-test: ## jest tests for webapp
-	cd webapp; pnpm run test
+	cd webapp; npm run test
 
 mac-app: server-mac webapp ## Build Mac application.
 	rm -rf mac/temp
